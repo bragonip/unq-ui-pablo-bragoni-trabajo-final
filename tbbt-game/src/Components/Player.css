@@ -1,0 +1,26 @@
+.player{
+    border: 1px solid black;
+    display: block;
+    width: 50%;
+    height: 80%;
+    align-items: center;
+    justify-content: center;
+}
+
+.selected_option{
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.player_name{
+    border: 1px solid black;
+    justify-content: left;
+    display: flex;
+}
+.options{
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

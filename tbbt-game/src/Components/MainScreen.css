@@ -1,0 +1,13 @@
+.main_screen{
+    display: block;
+    border: 1px solid black;
+}
+.main_screen_header{
+    text-align: center;
+    border: 1px solid black;
+}
+.game_players{
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+}
