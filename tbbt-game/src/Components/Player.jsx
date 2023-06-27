@@ -3,35 +3,36 @@ import Option from "./Option";
 import './Player.css'
 import GameItems from "./GameItems";
 
-const Player = () => {
-    const [selectedOption,setSelectedOption] = useState('lala')
+const Player = ({setPlayerChoice}) => {
+    const [chosenOption,setChosenOption] = useState(null)
+
+    const setChoiceToShow = (item) =>{
+        setChosenOption(item)
+        setPlayerChoice(item)
+    }
 
     return(
         <div className="player">
             <div className="selected_option">
-                <Option item={selectedOption} />
+                <Option item={chosenOption} setChoiceToShow={setChoiceToShow}/>
             </div>
             <div className="player_name">
-                <p>Player</p>
+                <p>Victorias</p>
                 <p>10</p>
+                <button>Set selection</button>
+                <button>Auto selection</button>
             </div>
             <div className="options">
-                {GameItems.map((item)=>{
-                    <Option item={item.id} onClick={()=>setSelectedOption('Rock')}/>
-                })}
-
-
-
-                </div>
+                {GameItems.map((item)=>(
+                    <Option
+                        key={item.id}
+                        item={item.id}
+                        setChoiceToShow={setChoiceToShow}
+                    />
+                ))}
+            </div>
         </div>
-        )
+    )
 }
 
 export default Player
-
-
-// <Option item={'Rock'} onClick={()=>setSelectedOption('Rock')}/>
-// <Option item={'Paper'} onClick={()=>setSelectedOption('Paper')}/>
-// <Option item={'Scissors'} onClick={()=>setSelectedOption('Scissors')}/>
-// <Option item={'Lizard'} onClick={()=>setSelectedOption('Lizard')}/>
-// <Option item={'Spock'} onClick={()=>setSelectedOption('Spock')}/>
