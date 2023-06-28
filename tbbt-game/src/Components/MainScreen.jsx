@@ -1,18 +1,25 @@
 import React, {useState,useEffect} from 'react';
 import Player from './Player';
 import Header from './Header';
+import MatchResult from './MatchResult';
 import './MainScreen.css';
 
 const MainScreen = () => {
     const [playerOneChoice, setPlayerOneChoice] = useState(null)
     const [playerTwoChoice, setPlayerTwoChoice] = useState(null)
+    const [allowSelection, setAllowSelection] = useState(true)
     const [result,setResult] = useState()
 
     useEffect(() => {
         if (playerOneChoice && playerTwoChoice) {
-            console.log('eeeeeeeeeeeeeeeeeeee')        
+            setResult(true)
+            console.log('result')
         }
-      }, [playerOneChoice,playerTwoChoice]);
+        else if (playerOneChoice) {
+            setAllowSelection(!allowSelection)
+            console.log(allowSelection)
+        }
+    }, [playerOneChoice,playerTwoChoice]);
 
     return(
         <div className="main_screen">
@@ -20,8 +27,17 @@ const MainScreen = () => {
                 <Header/>
             </div>
             <div className='game_players'>
-                <Player setPlayerChoice={setPlayerOneChoice}/>
-                <Player setPlayerChoice={setPlayerTwoChoice}/>
+                {result ?
+                    (<>
+                        <MatchResult/>
+                    </>)
+                    : (<>
+                        <Player setPlayerChoice={setPlayerOneChoice} allowSelection={allowSelection}/>
+                        <Player setPlayerChoice={setPlayerTwoChoice} allowSelection={!allowSelection}/>
+                    </>)
+                }
+                
+                
             </div>
         </div>
     )

@@ -9,7 +9,7 @@ const Option = ({item,setChoiceToShow,show}) => {
 
     return(
         <div className="option" onClick={()=>handleSelection()}>
-            <p>{item.id}</p>
+            <img src={item.image} alt={item.name} />
         </div>
     )
 }

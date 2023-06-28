@@ -3,9 +3,8 @@ import Option from "./Option";
 import './Player.css'
 import GameItems from "./GameItems";
 
-const Player = ({setPlayerChoice}) => {
+const Player = ({setPlayerChoice, allowSelection}) => {
     const [currentSelection,setCurrentSelection] = useState(GameItems[0])
-    const [allowSelection,setAllowSelection] = useState(true)
 
     const setChoiceToShow = (item) =>{
         if (allowSelection){
@@ -18,7 +17,6 @@ const Player = ({setPlayerChoice}) => {
 
     const handleSetSelection = () =>{
         setPlayerChoice(currentSelection)
-        setAllowSelection(false)
     }
 
     const autoSelection = () =>{
@@ -41,7 +39,7 @@ const Player = ({setPlayerChoice}) => {
                         key={item.id}
                         item={item}
                         setChoiceToShow={setChoiceToShow}
-                        show={true}
+                        show={allowSelection}
                     />
                 ))}
             </div>
