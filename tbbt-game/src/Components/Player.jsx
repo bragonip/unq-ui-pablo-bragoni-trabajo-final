@@ -4,30 +4,44 @@ import './Player.css'
 import GameItems from "./GameItems";
 
 const Player = ({setPlayerChoice}) => {
-    const [chosenOption,setChosenOption] = useState(null)
+    const [currentSelection,setCurrentSelection] = useState(GameItems[0])
+    const [allowSelection,setAllowSelection] = useState(true)
 
     const setChoiceToShow = (item) =>{
-        setChosenOption(item)
-        setPlayerChoice(item)
+        if (allowSelection){
+            setCurrentSelection(item)
+        }
+        else {
+            //mensaje
+        }
     }
 
+    const handleSetSelection = () =>{
+        setPlayerChoice(currentSelection)
+        setAllowSelection(false)
+    }
+
+    const autoSelection = () =>{
+    }
+    
     return(
         <div className="player">
             <div className="selected_option">
-                <Option item={chosenOption} setChoiceToShow={setChoiceToShow}/>
+                <Option item={currentSelection} setChoiceToShow={setChoiceToShow} show={allowSelection}/>
             </div>
             <div className="player_name">
                 <p>Victorias</p>
                 <p>10</p>
-                <button>Set selection</button>
-                <button>Auto selection</button>
+                <button onClick={()=>handleSetSelection()}>Set selection</button>
+                <button onClick={()=>autoSelection()}>Auto selection</button>
             </div>
             <div className="options">
                 {GameItems.map((item)=>(
                     <Option
                         key={item.id}
-                        item={item.id}
+                        item={item}
                         setChoiceToShow={setChoiceToShow}
+                        show={true}
                     />
                 ))}
             </div>

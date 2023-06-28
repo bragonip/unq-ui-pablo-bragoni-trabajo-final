@@ -1,6 +1,6 @@
 import './Option.css'
 
-const Option = ({item,setChoiceToShow}) => {
+const Option = ({item,setChoiceToShow,show}) => {
 
     const handleSelection = () => {
         console.log('aaaaaaaaaaaaaaaa')
@@ -9,7 +9,7 @@ const Option = ({item,setChoiceToShow}) => {
 
     return(
         <div className="option" onClick={()=>handleSelection()}>
-            <p>{item}</p>
+            <p>{item.id}</p>
         </div>
     )
 }
