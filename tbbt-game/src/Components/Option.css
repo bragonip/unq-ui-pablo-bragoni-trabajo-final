@@ -5,4 +5,11 @@
     height: 80%;
     align-items: center;
     justify-content: center;
+    transition: all 0.2s;
+}
+
+.option:hover {
+    cursor: pointer;
+    transition: all 0.2s ease; 
+    transform: scale(1.2);
 }
