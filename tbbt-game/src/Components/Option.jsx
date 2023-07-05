@@ -1,17 +1,11 @@
 import './Option.css'
+import interrogation from '../images/interrogation.png'
 
-const Option = ({item,setChoiceToShow,show}) => {
-
-    const handleSelection = () => {
-        console.log('aaaaaaaaaaaaaaaa')
-        setChoiceToShow(item)
-    }
-
+const Option = ({item,setCurrentSelection,showAnimation,hideSelection}) => {
     return(
-        <div className="option" onClick={()=>handleSelection()}>
-            <img src={item.image} alt={item.name} />
+        <div className={'option' + showAnimation} onClick={()=>setCurrentSelection(item)}>
+            <img src={hideSelection ? interrogation : item.image} alt={item.name} />
         </div>
     )
 }
-
 export default Option

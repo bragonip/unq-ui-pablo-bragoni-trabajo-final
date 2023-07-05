@@ -1,26 +1,25 @@
 .player{
-    border: 1px solid black;
     display: block;
-    width: 50%;
-    height: 80%;
     align-items: center;
     justify-content: center;
 }
 
 .selected_option{
-    border: 1px solid black;
     justify-content: center;
-    align-items: center;
-    align-content: center;
+    display: flex;
+    height: 40vh;
+}
+.selected_option>img{
 }
 .player_name{
-    border: 1px solid black;
+    height: 10vh;
     justify-content: left;
     display: flex;
 }
 .options{
-    border: 1px solid black;
+    height: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    column-gap: 2vw;
 }
