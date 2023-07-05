@@ -1,23 +1,14 @@
 .optiontrue{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: all 0.2s;
 }
 .optionfalse{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: all 0.2s;
 }
 .optiontrue:hover {
     cursor: pointer;
-    transition: all 0.2s ease; 
-    transform: scale(1.2);
+    transition: all 0.1s ease; 
+    transform: scale(1.5);
 }
 img{
-    width: 8vw;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
+    width: 30%;
 }

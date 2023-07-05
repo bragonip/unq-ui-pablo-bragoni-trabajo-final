@@ -4,22 +4,11 @@
     justify-content: center;
 }
 
-.selected_option{
+.current_selection{
     justify-content: center;
     display: flex;
-    height: 40vh;
 }
-.selected_option>img{
-}
-.player_name{
-    height: 10vh;
-    justify-content: left;
-    display: flex;
-}
-.options{
-    height: 10vh;
-    display: flex;
-    align-items: center;
+.player_info{
     justify-content: center;
-    column-gap: 2vw;
+    display: flex;
 }

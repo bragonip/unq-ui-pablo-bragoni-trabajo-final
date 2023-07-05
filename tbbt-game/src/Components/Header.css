@@ -1,3 +1,8 @@
 .header{
-    border: 1px solid rgb(180, 0, 0);
+}
+.buttonfalse{
+    background-color:rgb(255, 0, 0);
+}
+.buttontrue{
+    background-color:rgb(0, 255, 13);
 }

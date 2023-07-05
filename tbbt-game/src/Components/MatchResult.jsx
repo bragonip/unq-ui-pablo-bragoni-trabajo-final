@@ -1,33 +1,16 @@
-import React, { useState } from "react";
-import Option from "./Option";
+import React from "react";
 import './Player.css'
-import GameItems from "./GameItems";
 
-const MatchResult = ({playerOneSelection,playerTwoSelection}) => {
-
-    
-    const MatchWinner = () => {
-        if (playerOneSelection === playerTwoSelection){
-            return 'empate'
-        }
-        else if (GameItems[playerOneSelection].beats.includes(playerTwoSelection)){
-            return 'gano player one'
-        }
-        else if (GameItems[playerTwoSelection].beats.includes(playerOneSelection)){
-            return 'gano player two'
-        }
-        else {
-            return 'mostrar pagina de error'
-        }
-    }
-    
+const MatchResult = ({winner,losser,winnerPlayer,setPlayAgain}) => {
     return(
         <div className="match_result">
-            {playerOneSelection.name}
+            {winner.name}
             <p>beats</p>
-            {playerTwoSelection.name}
+            {losser.name}
+            
+            <p>{winnerPlayer} wins!</p>
+            <button onClick={()=>setPlayAgain(true)}>Play Again!</button>
         </div>
     )
 }
-
 export default MatchResult

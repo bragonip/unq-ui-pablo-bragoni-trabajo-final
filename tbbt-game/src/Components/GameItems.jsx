@@ -11,5 +11,4 @@ const GameItems = [
     {id:3,name:'Lizard',image:lizard,beats:[1]},
     {id:4,name:'Spock',image:spock,beats:[3,0]},
 ]
-
 export default GameItems

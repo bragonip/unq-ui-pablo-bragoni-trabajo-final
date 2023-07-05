@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Option from "./Option";
 import './Player.css'
 
-const Player = ({currentSelection,allowSelection,hideSelection,setCurrentSelection}) => {
+const Player = ({currentSelection,allowSelection,hideSelection,setCurrentSelection,victories}) => {
     return(
         <div className="player">
             <div className="current_selection">
@@ -15,8 +15,8 @@ const Player = ({currentSelection,allowSelection,hideSelection,setCurrentSelecti
                 />
             </div>
             <div className="player_info">
-                <p>Victorias</p>
-                <p>10</p>
+                <p>Victories: </p>
+                <p>{victories}</p>
             </div>
         </div>
     )
