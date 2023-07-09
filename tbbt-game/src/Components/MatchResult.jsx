@@ -1,24 +1,29 @@
 import React from "react";
-import './Player.css'
+import Option from "./Option";
+import './MatchResult.css'
 
 const MatchResult = ({winner,losser,winnerPlayer,setPlayAgain}) => {
+
+    const sameChoice = (winner.id === losser.id)
+    
     return(
         <div className="match_result">
-            {(winner.id === losser.id) ?
-                (<>
-                    <div className='match_result_tie'>
-                        <p>Tied Round</p>
-                    </div>
-                </>)
-                : (<>
-                    <div className='match_result_winner'>
-                        {winner.name}
-                        <p>beats</p>
-                        {losser.name}
-                        <p>{winnerPlayer} wins!</p>
-                    </div>
-                </>)
-            }
+            <div className="players_choices">
+                <Option
+                    key={winner.id}
+                    item={winner}
+                    showAnimation={false}
+                    hideSelection={false}
+                />
+                <p className="final_result">{winner.name} {sameChoice ? 'ties' : 'beats'} {losser.name}</p>
+                <Option
+                    key={losser.id}
+                    item={losser}
+                    showAnimation={false}
+                    hideSelection={false}
+                />
+            </div>
+            <p className="final_result">{sameChoice ? 'Tied Round' : winnerPlayer + ' wins!'}</p>
             <button onClick={()=>setPlayAgain(true)}>Play Again!</button>
         </div>
     )

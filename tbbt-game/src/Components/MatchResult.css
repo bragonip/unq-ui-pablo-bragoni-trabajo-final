@@ -1,0 +1,29 @@
+.match_result{
+    display: block;
+}
+
+.players_choices{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.final_result{
+    font-size: large;
+}
+.match_result>button{
+    border: 1px solid  rgb(200, 200, 100);
+    background-color: rgb(80, 80, 40);
+    color:  rgb(200, 200, 100);
+    padding: 1vh;
+}
+.match_result>button:hover{
+    cursor: pointer;
+}
+
+@media screen and (orientation:portrait){    
+    .players_choices{
+        display: block;
+        align-items: center;
+        justify-content: center;
+    }
+}

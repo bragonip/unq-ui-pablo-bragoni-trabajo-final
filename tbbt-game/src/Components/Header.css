@@ -26,9 +26,7 @@
     text-decoration: none;
     padding: 1vh;
 }
-
 @media screen and (orientation:portrait){
-    
     .main_screen_game_config{
         text-align: center;
         align-items: center;

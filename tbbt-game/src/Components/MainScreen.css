@@ -4,6 +4,9 @@
 }
 .main_screen_header{
 }
+.game_status{
+    font-size: large;
+}
 .main_screen_body{
 }
 .main_screen_result{
@@ -18,6 +21,7 @@
     display: flex;
 }
 .confirm_selection{
+    margin-top: 1vh;
 }
 .confirm_selection>button{
     border: 1px solid  rgb(200, 200, 100);
@@ -28,16 +32,4 @@
 }
 .confirm_selection>button:hover{
     cursor: pointer;
-}
- 
-@media screen and (orientation:portrait){
-    .main_screen_match{
-        display: flex;
-    }
-    .game_players{
-        display: block;
-    }
-    .options{
-        display: block;
-    }
 }

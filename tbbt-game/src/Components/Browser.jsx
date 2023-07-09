@@ -1,17 +1,15 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import MainScreen from './MainScreen';
 import NotFoundPage from './NotFoundPage';
+import Game from '../Game';
 
-const Browser = ()=> {
+const Browser = () => {
     <BrowserRouter> 
         <Routes>
-            <Route path="/">
-                <Route index element={<MainScreen/>} />
-                <Route path="*" element={<NotFoundPage/>} />
-            </Route>
+            <Route path="/" element={<Game/>} index/>
+            <Route path="*" element={<NotFoundPage/>}/>
         </Routes>
     </BrowserRouter>
 }
-export default Browser ;
+export default Browser
 
  

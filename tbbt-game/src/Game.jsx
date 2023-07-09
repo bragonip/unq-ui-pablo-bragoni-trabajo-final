@@ -1,10 +1,10 @@
-import Browser from './Components/Browser';
+import MainScreen from './Components/MainScreen';
 import './Game.css'
 
 const Game = () => {
     return (
         <div className="Game">
-            <Browser/>
+            <MainScreen/>
         </div>
     );
 }
