@@ -9,7 +9,7 @@ import Option from "./Option";
 const MainScreen = () => {
     const [singlePlayer, setSinglePlayer] = useState(true)
     const [allowSelection, setAllowSelection] = useState(true)
-    const [currentSelection,setCurrentSelection] = useState(GameItems[0])
+    const [currentSelection,setCurrentSelection] = useState(null)
     const [hideSelection,setHideSelection] = useState(false)
     const [playerOneSelection, setPlayerOneSelection] = useState(null)
     const [playerTwoSelection, setPlayerTwoSelection] = useState(null)
@@ -19,12 +19,47 @@ const MainScreen = () => {
     const [playerOneVictories,setPlayerOneVictories] = useState(0)
     const [playerTwoVictories,setPlayerTwoVictories] = useState(0)
     const [winnerPlayer,setWinnerPlayer] = useState('')
-
+    const [gameStatus,setGameStatus] = useState('Waiting for Player One choice...')
     const [playAgain,setPlayAgain] = useState(false)
 
     useEffect(() => {
+        setPlayerOneSelection(null)
+        setPlayerTwoSelection(null)
+        setPlayerOneVictories(0)
+        setPlayerTwoVictories(0)
+        setWinnerPlayer('')
+        setPlayAgain(!playAgain)
+    },[singlePlayer]);
+
+    useEffect(() => {
+        if (playerOneSelection && singlePlayer) {
+            setPlayerTwoSelection(AutoSelection())
+        }
+        else if (playerOneSelection) {
+            setGameStatus('Waiting for Player Two choice...')
+            setAllowSelection(!allowSelection)
+        }
+    }, [playerOneSelection]);
+
+    useEffect(() => {
+        let timeout;
+        setGameStatus('Calculating match result...')
+        if (playerTwoSelection) {
+          timeout = setTimeout(() => {
+            setResult(true);
+          }, 2000);
+        }
+        
+        return () => clearTimeout(timeout);
+      }, [playerTwoSelection]);
+
+    useEffect(() => {
+        matchResult()
+    }, [result]);
+
+    useEffect(() => {
         setAllowSelection(true)
-        setCurrentSelection(GameItems[0])
+        setCurrentSelection(null)
         setHideSelection(false)
         setResult(false)
         setWinner(null)
@@ -33,32 +68,13 @@ const MainScreen = () => {
         setPlayerOneSelection(null)
         setPlayerTwoSelection(null)
         setPlayAgain(false)
+        setGameStatus('Waiting for Player One choice...')
     },[playAgain]);
-
-    useEffect(() => {
-        if (playerOneSelection && singlePlayer) {
-            setPlayerTwoSelection(AutoSelection())
-        }
-        else if (playerOneSelection) {
-            setAllowSelection(!allowSelection)
-        }
-    }, [playerOneSelection]);
-
-    useEffect(() => {
-        if (playerTwoSelection) {
-            setResult(true)
-            console.log(playerOneSelection)
-            console.log(playerTwoSelection)
-        }
-    }, [playerTwoSelection]);
-
-    useEffect(() => {
-        matchResult()
-    }, [result]);
 
     const matchResult = () => {
         if (playerOneSelection === playerTwoSelection){
-            return 'empate'
+            setWinner(playerOneSelection)
+            setLosser(playerTwoSelection)
         }
         else if (playerOneSelection.beats.includes(playerTwoSelection.id)){
             setWinner(playerOneSelection)
@@ -72,9 +88,6 @@ const MainScreen = () => {
             setPlayerTwoVictories(playerTwoVictories+1)
             setWinnerPlayer('Player Two')
         }
-        else {
-            return 'mostrar pagina de error'
-        }
     }
 
     const AutoSelection = () => {
@@ -82,13 +95,13 @@ const MainScreen = () => {
     }
 
     const handleConfirmSelection = () => {
-        if (playerOneSelection) {
+        if (playerOneSelection && currentSelection) {
             setPlayerTwoSelection(currentSelection)
         }
-        else {
+        else if (currentSelection){
             setPlayerOneSelection(currentSelection)
             setHideSelection(true)
-            setCurrentSelection(GameItems[0])
+            setCurrentSelection(null)
         }
     }
 
@@ -99,6 +112,9 @@ const MainScreen = () => {
                     singlePlayer={singlePlayer}
                     setSinglePlayer={setSinglePlayer}
                 />
+            </div>
+            <div className='game_status'>
+                <p>{!result ? gameStatus : ''}</p>
             </div>
             <div className='main_screen_body'>
                 {(winner && losser) ?
@@ -121,6 +137,7 @@ const MainScreen = () => {
                                     hideSelection={hideSelection}
                                     setCurrentSelection={setCurrentSelection}
                                     victories={playerOneVictories}
+                                    playerName={'Player One'}
                                 />
                                 <Player
                                     currentSelection={currentSelection}
@@ -128,6 +145,7 @@ const MainScreen = () => {
                                     hideSelection={!hideSelection}
                                     setCurrentSelection={setCurrentSelection}
                                     victories={playerTwoVictories}
+                                    playerName={'Player Two'}
                                 />
                             </div>                        
                             <div className="options">

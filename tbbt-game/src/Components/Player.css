@@ -1,14 +1,8 @@
 .player{
-    display: block;
-    align-items: center;
-    justify-content: center;
+    font-size:2.5vh;
 }
 
-.current_selection{
-    justify-content: center;
-    display: flex;
-}
-.player_info{
-    justify-content: center;
-    display: flex;
+@media screen and (orientation:portrait){
+    .player{
+    }
 }

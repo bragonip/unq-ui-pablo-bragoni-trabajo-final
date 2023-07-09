@@ -3,19 +3,12 @@
     text-align: center;
 }
 .main_screen_header{
-    text-align: center;
 }
 .main_screen_body{
-    display: block;
-    text-align: center;
 }
 .main_screen_result{
-    display: block;
-    text-align: center;
 }
 .main_screen_match{
-    display: block;
-    text-align: center;
 }
 .game_players{
     display: flex;
@@ -23,21 +16,28 @@
 }
 .options{
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .confirm_selection{
-    background: none;
 }
 .confirm_selection>button{
-    background: none;
+    border: 1px solid  rgb(200, 200, 100);
+    padding: 1vh;
+    margin: 1vh;
+    background-color: rgb(80, 80, 40);
+    color:  rgb(200, 200, 100);
 }
-/* 
+.confirm_selection>button:hover{
+    cursor: pointer;
+}
+ 
 @media screen and (orientation:portrait){
-    .game_players{
-        border: 1px solid red;
-        column-gap: 1vw;
-        display: block;
-        justify-content: center;
+    .main_screen_match{
+        display: flex;
     }
-} */
+    .game_players{
+        display: block;
+    }
+    .options{
+        display: block;
+    }
+}
