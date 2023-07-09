@@ -49,7 +49,6 @@ const MainScreen = () => {
             setResult(true);
           }, 2000);
         }
-        
         return () => clearTimeout(timeout);
       }, [playerTwoSelection]);
 
