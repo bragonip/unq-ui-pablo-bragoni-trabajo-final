@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import NotFoundPage from './NotFoundPage';
-import Game from '../Game';
+import NotFoundPage from './Components/NotFoundPage';
+import Game from './Game';
 
 const Browser = () => {
     <BrowserRouter> 
@@ -11,5 +11,3 @@ const Browser = () => {
     </BrowserRouter>
 }
 export default Browser
-
- 

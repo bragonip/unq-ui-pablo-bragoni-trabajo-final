@@ -2,7 +2,7 @@ import React from "react";
 import Option from "./Option";
 import './Player.css'
 
-const Player = ({currentSelection,allowSelection,hideSelection,setCurrentSelection,victories,playerName}) => {
+const Player = ({currentSelection,hideSelection,setCurrentSelection,victories,playerName}) => {
     return(
         <div className="player">
             <p>{playerName}</p>
@@ -10,7 +10,6 @@ const Player = ({currentSelection,allowSelection,hideSelection,setCurrentSelecti
                 <Option
                     item={currentSelection}
                     setCurrentSelection={setCurrentSelection}
-                    show={allowSelection}
                     showAnimation={false}
                     hideSelection={hideSelection}
                 />
