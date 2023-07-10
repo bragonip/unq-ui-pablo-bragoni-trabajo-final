@@ -72,14 +72,12 @@ const MainScreen = () => {
             setPlayerTwoSelection(currentSelection)
             setCurrentSelection(null)
         }
-        else {
-            if (gameStatus !== 'You must select an option first') {
-                let gamePrevStatus = gameStatus
-                setGameStatus('You must select an option first')
-                timeout = setTimeout(() => {
-                    setGameStatus(gamePrevStatus);
-                }, 2000);
-            }
+        else if (!currentSelection && (gameStatus !== 'You must select an option first')) {
+            let gamePrevStatus = gameStatus
+            setGameStatus('You must select an option first')
+            timeout = setTimeout(() => {
+                setGameStatus(gamePrevStatus);
+            }, 2000);
         }
         return ()=> clearTimeout(timeout)
     }
