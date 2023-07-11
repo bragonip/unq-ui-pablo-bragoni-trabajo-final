@@ -6,6 +6,6 @@ const Game = () => {
         <div className="Game">
             <MainScreen/>
         </div>
-    );
+    )
 }
 export default Game;

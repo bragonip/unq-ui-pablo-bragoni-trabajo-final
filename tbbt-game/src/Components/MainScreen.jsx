@@ -46,7 +46,7 @@ const MainScreen = () => {
 
     useEffect(() => {
         let timeout;
-        if (playerTwoSelection) {
+        if (playerOneSelection && playerTwoSelection) {
             setGameStatus('Calculating match result...')
             timeout = setTimeout(() => {
                 setResult(true);
