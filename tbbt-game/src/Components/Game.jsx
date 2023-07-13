@@ -3,7 +3,7 @@ import Player from './Player';
 import Header from './Header';
 import MatchResult from './MatchResult';
 import GameItems from './GameItems';
-import './MainScreen.css';
+import './Game.css';
 import Option from "./Option";
 
 const MainScreen = () => {
@@ -15,34 +15,30 @@ const MainScreen = () => {
     const [playerOneVictories, setPlayerOneVictories] = useState(0)
     const [playerTwoVictories, setPlayerTwoVictories] = useState(0)
     const [gameStatus, setGameStatus] = useState('Waiting for Player One choice...')
-    const [playAgain, setPlayAgain] = useState(false)
 
-    useEffect(() => {
+    const resetGame = () => {
         setResult(false)
-        setPlayAgain(!playAgain)
         setPlayerOneVictories(0)
         setPlayerTwoVictories(0)
         setPlayerOneSelection(null)
         setPlayerTwoSelection(null)
-    },[singlePlayer]);
+        setCurrentSelection(null)
+    }
 
-    useEffect(() => {
+    const playAgain = () => {
         setResult(false)
         setCurrentSelection(null)
         setPlayerOneSelection(null)
         setPlayerTwoSelection(null)
-        setPlayAgain(false)
         setGameStatus('Waiting for Player One choice...')
-    },[playAgain]);
+    }
 
-    useEffect(() => {
-        if (playerOneSelection && singlePlayer) {
-            setPlayerTwoSelection(AutoSelection())
+    const changeMode = (mode) => {
+        if (singlePlayer !== mode){
+            setSinglePlayer(mode)
+            resetGame()
         }
-        else if (playerOneSelection) {
-            setGameStatus('Waiting for Player Two choice...')
-        }
-    }, [playerOneSelection]);
+    }
 
     useEffect(() => {
         let timeout;
@@ -52,8 +48,14 @@ const MainScreen = () => {
                 setResult(true);
             }, 2000);
         }
+        else if (playerOneSelection && singlePlayer) {
+            setPlayerTwoSelection(AutoSelection())
+        }
+        else if (playerOneSelection) {
+            setGameStatus('Waiting for Player Two choice...')
+        }
         return () => clearTimeout(timeout);
-      }, [playerTwoSelection]);
+    }, [playerOneSelection, playerTwoSelection]);
 
     const AutoSelection = () => {
         return GameItems[Math.floor(Math.random()*GameItems.length)]
@@ -87,7 +89,8 @@ const MainScreen = () => {
             <div className='main_screen_header'>
                 <Header
                     singlePlayer={singlePlayer}
-                    setSinglePlayer={setSinglePlayer}
+                    changeMode={changeMode}
+                    resetGame={resetGame}
                 />
             </div>
             <div className='game_status'>
@@ -104,7 +107,7 @@ const MainScreen = () => {
                                 playerTwoSelection={playerTwoSelection}
                                 playerTwoVictories={playerTwoVictories}
                                 setPlayerTwoVictories={setPlayerTwoVictories}
-                                setPlayAgain={setPlayAgain}
+                                playAgain={playAgain}
                             />
                         </div>
                     </>)
@@ -114,14 +117,12 @@ const MainScreen = () => {
                                 <Player
                                     currentSelection={currentSelection}
                                     hideSelection={playerOneSelection}
-                                    setCurrentSelection={setCurrentSelection}
                                     victories={playerOneVictories}
                                     playerName={'Player One'}
                                 />
                                 <Player
                                     currentSelection={currentSelection}
                                     hideSelection={ !playerOneSelection || playerTwoSelection }
-                                    setCurrentSelection={setCurrentSelection}
                                     victories={playerTwoVictories}
                                     playerName={'Player Two'}
                                 />

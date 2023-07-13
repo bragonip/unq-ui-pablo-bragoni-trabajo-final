@@ -8,7 +8,7 @@ const MatchResult = ({playerOneSelection,
                     playerTwoSelection,
                     playerTwoVictories,
                     setPlayerTwoVictories,
-                    setPlayAgain}) => {
+                    playAgain}) => {
 
     const [winner,setWinner] = useState(null)
     const [losser,setLosser] = useState(null)
@@ -59,7 +59,7 @@ const MatchResult = ({playerOneSelection,
                 />
             </div>
             <p className="final_result">{sameChoice ? 'Tied Round' : winnerPlayer + ' wins!'}</p>
-            <button onClick={()=>setPlayAgain(true)}>Play Again!</button>
+            <button onClick={()=>playAgain()}>Play Again!</button>
         </div>
     )
 }

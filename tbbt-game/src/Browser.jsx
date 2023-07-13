@@ -1,7 +1,6 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import NotFoundPage from './Components/NotFoundPage';
-import Game from './Game';
-import MainScreen from './Components/MainScreen';
+import Game from './Components/Game';
 
 const Browser = () => 
     <BrowserRouter> 

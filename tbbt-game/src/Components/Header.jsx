@@ -1,7 +1,7 @@
 import React from "react";
 import './Header.css'
 
-const Header = ({singlePlayer,setSinglePlayer}) => {
+const Header = ({singlePlayer,changeMode,resetGame}) => {
     return(
         <div className="header">
             <h1>Rock - Paper - Scissors - Lizard - Spock</h1>
@@ -10,17 +10,22 @@ const Header = ({singlePlayer,setSinglePlayer}) => {
                     <div className='mode_selection'>
                         <button
                             className={'button' + singlePlayer}
-                            onClick={()=>setSinglePlayer(true)}>
+                            onClick={()=>changeMode(true)}>
                                 One Player
                         </button>
                         <button
                             className={'button' + !singlePlayer}
-                            onClick={()=>setSinglePlayer(false)}>
+                            onClick={()=>changeMode(false)}>
                                 Two Players
                         </button>
                     </div>
                 </div>
                 <a className='rules' href='https://www.youtube.com/watch?v=pIpmITBocfM' target="_blank">Rules</a>
+                <button
+                    className='rules'
+                    onClick={()=>resetGame()}>
+                        Reset Game
+                </button>
             </div>
             
         </div>
