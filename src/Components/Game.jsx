@@ -23,6 +23,7 @@ const MainScreen = () => {
         setPlayerOneSelection(null)
         setPlayerTwoSelection(null)
         setCurrentSelection(null)
+        setGameStatus('Waiting for Player One choice...')
     }
 
     const playAgain = () => {
